@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vip.video.repository.mapper.BallMapper" >
+  <resultMap id="BaseResultMap" type="com.vip.video.repository.entity.Ball" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="no1" property="no1" jdbcType="VARCHAR" />
+    <result column="no2" property="no2" jdbcType="VARCHAR" />
+    <result column="no3" property="no3" jdbcType="VARCHAR" />
+    <result column="no4" property="no4" jdbcType="VARCHAR" />
+    <result column="no5" property="no5" jdbcType="VARCHAR" />
+    <result column="no6" property="no6" jdbcType="VARCHAR" />
+    <result column="no7" property="no7" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, no1, no2, no3, no4, no5, no6, no7
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.vip.video.repository.entity.BallExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ball
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ball
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ball
+  </select>
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ball
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.vip.video.repository.entity.BallExample" >
+    delete from ball
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.vip.video.repository.entity.Ball" >
+    insert into ball (id, no1, no2, 
+      no3, no4, no5, no6, 
+      no7)
+    values (#{id,jdbcType=INTEGER}, #{no1,jdbcType=VARCHAR}, #{no2,jdbcType=VARCHAR}, 
+      #{no3,jdbcType=VARCHAR}, #{no4,jdbcType=VARCHAR}, #{no5,jdbcType=VARCHAR}, #{no6,jdbcType=VARCHAR}, 
+      #{no7,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vip.video.repository.entity.Ball" >
+    insert into ball
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="no1 != null" >
+        no1,
+      </if>
+      <if test="no2 != null" >
+        no2,
+      </if>
+      <if test="no3 != null" >
+        no3,
+      </if>
+      <if test="no4 != null" >
+        no4,
+      </if>
+      <if test="no5 != null" >
+        no5,
+      </if>
+      <if test="no6 != null" >
+        no6,
+      </if>
+      <if test="no7 != null" >
+        no7,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="no1 != null" >
+        #{no1,jdbcType=VARCHAR},
+      </if>
+      <if test="no2 != null" >
+        #{no2,jdbcType=VARCHAR},
+      </if>
+      <if test="no3 != null" >
+        #{no3,jdbcType=VARCHAR},
+      </if>
+      <if test="no4 != null" >
+        #{no4,jdbcType=VARCHAR},
+      </if>
+      <if test="no5 != null" >
+        #{no5,jdbcType=VARCHAR},
+      </if>
+      <if test="no6 != null" >
+        #{no6,jdbcType=VARCHAR},
+      </if>
+      <if test="no7 != null" >
+        #{no7,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.vip.video.repository.entity.BallExample" resultType="java.lang.Integer" >
+    select count(*) from ball
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ball
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.no1 != null" >
+        no1 = #{record.no1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.no2 != null" >
+        no2 = #{record.no2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.no3 != null" >
+        no3 = #{record.no3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.no4 != null" >
+        no4 = #{record.no4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.no5 != null" >
+        no5 = #{record.no5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.no6 != null" >
+        no6 = #{record.no6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.no7 != null" >
+        no7 = #{record.no7,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ball
+    set id = #{record.id,jdbcType=INTEGER},
+      no1 = #{record.no1,jdbcType=VARCHAR},
+      no2 = #{record.no2,jdbcType=VARCHAR},
+      no3 = #{record.no3,jdbcType=VARCHAR},
+      no4 = #{record.no4,jdbcType=VARCHAR},
+      no5 = #{record.no5,jdbcType=VARCHAR},
+      no6 = #{record.no6,jdbcType=VARCHAR},
+      no7 = #{record.no7,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vip.video.repository.entity.Ball" >
+    update ball
+    <set >
+      <if test="no1 != null" >
+        no1 = #{no1,jdbcType=VARCHAR},
+      </if>
+      <if test="no2 != null" >
+        no2 = #{no2,jdbcType=VARCHAR},
+      </if>
+      <if test="no3 != null" >
+        no3 = #{no3,jdbcType=VARCHAR},
+      </if>
+      <if test="no4 != null" >
+        no4 = #{no4,jdbcType=VARCHAR},
+      </if>
+      <if test="no5 != null" >
+        no5 = #{no5,jdbcType=VARCHAR},
+      </if>
+      <if test="no6 != null" >
+        no6 = #{no6,jdbcType=VARCHAR},
+      </if>
+      <if test="no7 != null" >
+        no7 = #{no7,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vip.video.repository.entity.Ball" >
+    update ball
+    set no1 = #{no1,jdbcType=VARCHAR},
+      no2 = #{no2,jdbcType=VARCHAR},
+      no3 = #{no3,jdbcType=VARCHAR},
+      no4 = #{no4,jdbcType=VARCHAR},
+      no5 = #{no5,jdbcType=VARCHAR},
+      no6 = #{no6,jdbcType=VARCHAR},
+      no7 = #{no7,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

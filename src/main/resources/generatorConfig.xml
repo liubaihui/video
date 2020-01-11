@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="mysqlgenerator" targetRuntime="MyBatis3">
+        <!--不生成注释-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://47.91.239.51:3306/balldata"
+                        userId="balldata"
+                        password="tRtn2ZXdpzzMACct" />
+
+        <javaModelGenerator targetPackage="com.vip.video.video.repository.entity" targetProject="src/main/java" >
+            <property name="enableSubPackages" value="true" />
+        </javaModelGenerator>
+
+        <!--<sqlMapGenerator targetPackage="com.yiche.bdc.olap.api.repository.mapper" targetProject="src/main/resources" />-->
+
+        <!--<javaClientGenerator type="XMLMAPPER" targetPackage="com.yiche.bdc.olap.api.repository" targetProject="src/main/java" />-->
+
+
+        <!--指定sql映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="com.vip.video.video.repository.mapper" targetProject="src/main/resources" >
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!-- 指定dao接口生成的位置，mapper接口 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.vip.video.video.repository.mapper" targetProject="src/main/java" >
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--<table tableName="olap_dimension_dict" domainObjectName = "OlapDimensionDict" />-->
+        <!--<table tableName="olap_collection" domainObjectName = "OlapCollection" />-->
+        <!--<table tableName="olap_question" domainObjectName = "OlapQuestion" />-->
+        <!--<table tableName="olap_question" domainObjectName = "OlapQuestion" />-->
+        <!--<table tableName="olap_dimension" domainObjectName = "OlapDimension" />-->
+        <!--<table tableName="olap_metrics" domainObjectName = "OlapMetrics" />-->
+        <!--<table tableName="olap_metrics" domainObjectName = "OlapMetrics" />-->
+        <!--<table tableName="olap_dimension_level" domainObjectName = "OlapDimensionLevel" />-->
+       <!-- <table tableName="prize" domainObjectName = "Prize" />
+        <table tableName="prize_user" domainObjectName = "PrizeUser" />
+        <table tableName="user" domainObjectName = "User" />-->
+        <table tableName="status" domainObjectName = "Status" />
+
+    </context>
+
+</generatorConfiguration>
